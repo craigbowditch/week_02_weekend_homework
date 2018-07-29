@@ -1,3 +1,5 @@
+require('pry')
+
 class Room
 
   attr_reader :room_name, :capacity, :entry_fee
@@ -31,7 +33,7 @@ class Room
   end
 
   def add_song_to_room(song)
-    @songs.push(song)
+    @songs.push(song.name)
   end
 
   def reached_capacity()
@@ -46,6 +48,14 @@ class Room
       return true
     end
     return false
+  end
+
+  def check_favourite_song_in_playlist(guest)
+    if @songs.include?(guest.favourite_song)
+      return 'What a banger!'
+    else
+      return 'Hang the DJ!'
+    end
   end
 
 

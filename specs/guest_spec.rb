@@ -7,8 +7,7 @@ require_relative '../room'
 class GuestTest < MiniTest::Test
 
   def setup
-    @room = Room.new("Room 1", 10, 5)
-    @guest = Guest.new("Craig", 50)
+    @guest = Guest.new("Craig", 50, "Pina Colada")
 
   end
 
@@ -25,6 +24,8 @@ class GuestTest < MiniTest::Test
     assert_equal(45, @guest.money)
   end
 
-
+  def test_has_favourite_song()
+    assert_equal("Pina Colada", @guest.favourite_song())
+  end
 
 end

@@ -14,8 +14,8 @@ class RoomTest < MiniTest::Test
     @song2 = Song.new("Heartbreaker")
     @song3 = Song.new("You really got a hold on me")
 
-    @guest1 = Guest.new("Craig", 50)
-    @guest2 = Guest.new("Dave", 3)
+    @guest1 = Guest.new("Craig", 50, "Pina Colada")
+    @guest2 = Guest.new("Dave", 3, "Heartbreaker")
 
     @room1 = Room.new("Room 1", 10, 5)
     @room2 = Room.new("Room 2", 1, 4)
@@ -81,4 +81,18 @@ class RoomTest < MiniTest::Test
     assert_equal(45, @guest1.money)
   end
 
+  def test_favourite_song_in_playlist()
+    @room1.add_song_to_room(@song1)
+    @room1.add_song_to_room(@song2)
+    result = @room1.check_favourite_song_in_playlist(@guest1)
+    assert_equal("What a banger!", result)
+  end
+
+  def test_favourite_song_not_in_playlist()
+    @room1.add_guest_to_room(@guest1)
+    @room1.add_song_to_room(@song2)
+    @room1.add_song_to_room(@song3)
+    result = @room1.check_favourite_song_in_playlist(@guest1)
+    assert_equal("Hang the DJ!", result)
+  end
 end

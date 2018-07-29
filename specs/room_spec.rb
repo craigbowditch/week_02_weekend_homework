@@ -75,4 +75,10 @@ class RoomTest < MiniTest::Test
     result = @room1.check_guest_money(@guest1)
     assert_equal(false, result)
   end
+
+  def test_check_in_guest_pays_entry_fee()
+    @room1.check_in_guest(@guest1)
+    assert_equal(45, @guest1.money)
+  end
+
 end

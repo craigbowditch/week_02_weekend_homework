@@ -10,9 +10,8 @@ attr_reader :name, :money
 
   end
 
-  def pay_entry(room)
-    @money -= room.entry_fee()
+  def pay_entry(fee)
+    @money -= fee
   end
-
 
 end
